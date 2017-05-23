@@ -31,7 +31,7 @@ dependencies {
     compile 'com.squareup.okio:okio:1.11.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
 
-    compile "android.ztone:ztone.lang:0.1.1"
+    compile "android.ztone:ztone-lang:0.1.0"
 
     testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -44,11 +44,8 @@ uploadArchives {
         repository(id: RELEASE_REPO_ID, url: LOCAL_REPO_URL)
         snapshotRepository(id: SNAPSHOTS_REPO_ID, url: LOCAL_REPO_URL)
 
-        pom.groupId = POM_GROUP_ID
-        pom.artifactId = POM_ARTIFACT_ID
-        pom.version = VERSION_FRAME_NETWORK
-//        pom.name = "xxx"
-//        pom.packaging = 'aar'
-
+        pom.groupId = 'android.ztone'
+        pom.artifactId = 'ztone-network'
+        pom.version = '0.1.1'
     }
 }
