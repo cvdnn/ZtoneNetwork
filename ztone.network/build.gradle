@@ -28,8 +28,8 @@ dependencies {
 
     compile "com.android.support:appcompat-v7:${VERSION_ANDROID_SUPPORT}"
 
-    compile 'com.squareup.okio:okio:1.14.0'
-    compile 'com.squareup.okhttp3:okhttp:3.11.0'
+    compile 'com.squareup.okio:okio:1.11.0'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
 
     compile "android.ztone:ztone-lang:0.3.1"
 
@@ -46,6 +46,6 @@ uploadArchives {
 
         pom.groupId = 'android.ztone'
         pom.artifactId = 'ztone-network'
-        pom.version = '0.1.1'
+        pom.version = '0.1.2'
     }
 }
