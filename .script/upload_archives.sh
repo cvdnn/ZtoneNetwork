@@ -8,7 +8,7 @@ git commit -m "ZTONE_NETWORK"
 git push origin master
 
 if (( $# == 0 )) || [[ -z $1 ]]; then
-    ./gradlew -q -p ztone.lang clean build uploadArchives
+    ./gradlew -q -p ztone.network clean build uploadArchives
 
 else
     _MODULE_NAME=$1
