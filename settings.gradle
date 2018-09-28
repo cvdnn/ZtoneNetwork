@@ -1,1 +1,1 @@
-include ':app', ':ztone.network'
+include ':app', ':ztone-network', ':ztone-pulley'

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ztone Pulley</string>
+    <string name="toast_error_response">ERROR</string>
+</resources>

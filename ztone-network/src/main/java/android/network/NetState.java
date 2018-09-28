@@ -21,7 +21,6 @@ import android.os.ConditionVariable;
 import android.os.Looper;
 import android.support.annotation.RequiresPermission;
 import android.support.annotation.WorkerThread;
-import android.support.v4.os.AsyncTaskCompat;
 
 import java.io.File;
 import java.net.InetSocketAddress;
@@ -131,7 +130,7 @@ public final class NetState {
     public static void checkInternetConnected(final String host, final int port, final OnConnectionCheckedListener listener) {
         if (listener != null) {
             if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-                AsyncTaskCompat.executeParallel(new AsyncTask<Void, Integer, Boolean>() {
+                new AsyncTask<Void, Integer, Boolean>() {
                     @Override
                     protected Boolean doInBackground(Void... params) {
 
@@ -142,7 +141,7 @@ public final class NetState {
                     protected void onPostExecute(Boolean result) {
                         listener.onChecked(result);
                     }
-                });
+                }.execute();
             } else {
                 listener.onChecked(isInternetConnected());
             }
@@ -237,6 +236,7 @@ public final class NetState {
      *
      * @return
      */
+    @RequiresPermission(allOf = {"android.permission.ACCESS_NETWORK_STATE"})
     public static State getWIFIState(Context appContext) {
         State wifiState = State.UNKNOWN;
 

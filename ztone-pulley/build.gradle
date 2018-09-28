@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName '0.1'
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':ztone-network')
+
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+
+    compileOnly 'android.ztone:ztone-entity:0.1'
+    compileOnly 'android.ztone:ztone-lang:0.3.2'
+
+    compileOnly 'com.squareup.okio:okio:1.14.0'
+    compileOnly 'com.squareup.okhttp3:okhttp:3.11.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+// push to bintray
+ext {
+    bintrayOrg = 'ztone'
+    // bintray中创建的package name
+    bintrayName = 'ztone-pulley'
+
+    libraryName = 'Ztone Pulley'
+    publishedGroupId = 'android.ztone'
+    artifact = 'ztone-pulley'
+    libraryVersion = android.defaultConfig.versionName
+
+    libraryDescription = 'Ztone Pulley'
+
+    siteUrl = 'https://github.com/handy001/ZtoneNetwork'
+    gitUrl = 'https://github.com/handy001/ZtoneNetwork.git'
+}
+
+apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/pom_build.gradle'
+apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/push_bintray.gradle'
