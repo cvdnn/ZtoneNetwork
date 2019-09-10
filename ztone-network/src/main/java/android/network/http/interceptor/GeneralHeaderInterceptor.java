@@ -53,7 +53,7 @@ public class GeneralHeaderInterceptor implements Interceptor {
                         .removeAll(TRANSFER_ENCODING)
                         .build();
 
-                responseBuilder.body(new RealResponseBody(strippedHeaders, buffer));
+                responseBuilder.body(new RealResponseBody(strippedHeaders.toString(), contentLength, buffer));
 
                 response = responseBuilder.build();
             }
