@@ -7,10 +7,6 @@ import android.content.Context;
 import android.entity.Entity;
 import android.entity.PullEntity;
 import android.entity.PullFlag;
-import android.framework.context.lifecycle.LifeCycleUtils;
-import android.framework.context.lifecycle.OnLifeCycleListener;
-import android.framework.entity.Entity;
-import android.framework.pull.interceptor.PullClan;
 import android.network.pull.interceptor.PullClan;
 import android.support.annotation.NonNull;
 import android.support.annotation.WorkerThread;
@@ -18,7 +14,7 @@ import android.support.annotation.WorkerThread;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public final class Pulley extends PullClan implements OnLifeCycleListener {
+public final class Pulley extends PullClan {
     private static final String TAG = "Pulley";
 
     protected final Context mContext;
@@ -83,17 +79,17 @@ public final class Pulley extends PullClan implements OnLifeCycleListener {
         return mContext instanceof Activity && ((Activity) mContext).isFinishing();
     }
 
-    @Override
+    //    @Override
     public <C extends Context> void onStart(@NonNull C context) {
 
     }
 
-    @Override
+    //    @Override
     public void onStop() {
 
     }
 
-    @Override
+    //    @Override
     public void onDestroy() {
         cancel();
     }
@@ -147,7 +143,7 @@ public final class Pulley extends PullClan implements OnLifeCycleListener {
 
             // 为了规避调用者可能存在的listener泄漏，当不明绑定对象不注册生命周期监听
             if (mAttachObject != null) {
-                LifeCycleUtils.adhere(mAttachObject).register(pulley);
+//                LifeCycleUtils.adhere(mAttachObject).register(pulley);
             }
 
             return pulley;

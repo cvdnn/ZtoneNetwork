@@ -6,6 +6,7 @@ import android.content.Context;
 import android.log.Log;
 import android.math.Maths;
 import android.math.ShortDigest;
+import android.network.AbstractInitializer;
 import android.network.DNSUtils;
 import android.network.http.interceptor.AnalyticsInterceptor;
 import android.network.http.interceptor.GeneralHeaderInterceptor;
@@ -47,6 +48,16 @@ public final class HTTPx {
     public static final int TIMEOUT_READ_WRITE = 20;
 
     public static final long VALIDITY_TIME = 300000;
+
+    public static final class Initializer extends AbstractInitializer {
+
+        @Override
+        public boolean onCreate() {
+            Client.onInit(getContext());
+
+            return true;
+        }
+    }
 
     public static final class Client {
         public static final ConnectionPool mConnectionPool = new ConnectionPool(8, 5, TimeUnit.MINUTES);

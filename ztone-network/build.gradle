@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
-        versionName '0.1.2'
+        versionName '0.1.3'
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -27,12 +27,12 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 
     compileOnly 'com.squareup.okio:okio:1.14.0'
     compileOnly 'com.squareup.okhttp3:okhttp:3.11.0'
 
-    compileOnly "android.ztone:ztone-lang:0.3.1"
+    compileOnly "android.ztone:ztone-lang:0.3.25"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -57,4 +57,4 @@ ext {
 }
 
 apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/pom_build.gradle'
-apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/push_bintray.gradle'
+apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/push_to_bintray.gradle'

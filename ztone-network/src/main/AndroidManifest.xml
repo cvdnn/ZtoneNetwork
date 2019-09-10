@@ -4,6 +4,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <application />
+    <application>
+
+        <provider
+            android:name=".http.HTTPx$Initializer"
+            android:authorities="${applicationId}.httpx"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
 
 </manifest>

@@ -1,13 +1,9 @@
 package android.network.pull;
 
-import android.AppResource;
 import android.assist.Assert;
 import android.check.ValidateUtils;
 import android.entity.PullEntity;
-import android.framework.C;
-import android.framework.Loople;
 import android.log.Log;
-import android.network.http.HTTPx;
 import android.network.http.ResponseTransform;
 import android.network.pull.interceptor.PullClan;
 import android.support.annotation.NonNull;
@@ -17,7 +13,6 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 
 import okhttp3.Call;
-import okhttp3.HttpUrl;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -54,13 +49,10 @@ public class PullFollow<E extends PullEntity> implements OnPullListener<E>, okht
 
             } else {
                 pHolder.entity.result = RESPONSE_NULL;
-                pHolder.entity.message = AppResource.getString(R.string.toast_error_response);
             }
 
-            HttpUrl httpUrl = request.url();
-            String url = httpUrl.toString(), action = HTTPx.query(httpUrl, C.tag.action);
-            Log.d(TAG, "NN: [%s]: %s" , action , url);
-            Log.d(TAG, "NN: [%s]: %s", action, pHolder.entity.format().toString());
+            String url = request.url().toString();
+            Log.d(TAG, "NN: [url]: %s" , url);
         }
     }
 
@@ -74,11 +66,11 @@ public class PullFollow<E extends PullEntity> implements OnPullListener<E>, okht
 
             if (e instanceof SocketTimeoutException) {
                 pHolder.entity.result = RESPONSE_TIME_OUT;
-                pHolder.entity.message = AppResource.getString(R.string.toast_error_socket_timeout);
+//                pHolder.entity.message = AppResource.getString(R.string.toast_error_socket_timeout);
 
             } else if (e instanceof SocketException) {
                 pHolder.entity.result = NETWORK_ERROR;
-                pHolder.entity.message = AppResource.getString(R.string.toast_error_socket);
+//                pHolder.entity.message = AppResource.getString(R.string.toast_error_socket);
 
             } else {
                 pHolder.entity.result = NETWORK_ERROR;
@@ -100,7 +92,7 @@ public class PullFollow<E extends PullEntity> implements OnPullListener<E>, okht
     }
 
     public final void post(final int position, final E entity, final String url) {
-        Loople.post(new Runnable() {
+        Loople.Impl.post(new Runnable() {
 
             @Override
             public void run() {
