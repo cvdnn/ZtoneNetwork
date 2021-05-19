@@ -1,10 +1,10 @@
 package android.network;
 
 import android.assist.Assert;
-import android.assist.TextLinker;
 import android.content.Context;
 import android.math.Maths;
 import android.os.Build;
+import android.text.TextLink;
 import android.webkit.URLUtil;
 
 import java.util.regex.Pattern;
@@ -21,7 +21,7 @@ public class NetUtils {
         String mac = "";
 
         if (Assert.notEmpty(addrArrays)) {
-            TextLinker addrLinker = TextLinker.create(":");
+            TextLink addrLinker = TextLink.create(":");
 
             for (int i = 0; i < addrArrays.length; i++) {
                 addrLinker.append(Maths.toHex(addrArrays[i]));
@@ -37,7 +37,7 @@ public class NetUtils {
         String ip = "";
 
         if (Assert.notEmpty(addrArrays)) {
-            TextLinker addrLinker = TextLinker.create(".");
+            TextLink addrLinker = TextLink.create(".");
 
             for (int i = 0; i < addrArrays.length; i++) {
                 addrLinker.append(String.valueOf((addrArrays[i] < 0) ? 256 + addrArrays[i] : addrArrays[i]));
@@ -81,6 +81,7 @@ public class NetUtils {
      * 检测系统是否已经设置代理
      *
      * @param context
+     *
      * @return
      */
     public static boolean isNetwoekByProxy(Context context) {

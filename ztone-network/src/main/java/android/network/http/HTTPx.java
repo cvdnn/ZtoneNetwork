@@ -1,7 +1,6 @@
 package android.network.http;
 
 import android.assist.Assert;
-import android.assist.TextUtilz;
 import android.content.Context;
 import android.log.Log;
 import android.math.Maths;
@@ -15,6 +14,7 @@ import android.network.http.tls.TLSUtils;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.util.ArrayMap;
+import android.text.TextUtilz;
 import android.webkit.URLUtil;
 
 import java.io.File;
@@ -210,6 +210,7 @@ public final class HTTPx {
      * 判断是否是Gzip压缩的
      *
      * @param response 请求
+     *
      * @return
      */
     public static boolean isGzipEncoding(Response response) {

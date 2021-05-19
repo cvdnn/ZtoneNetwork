@@ -25,10 +25,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':ztone-network')
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-
-    compileOnly 'android.ztone:ztone-entity:0.1'
-    compileOnly 'android.ztone:ztone-lang:0.3.2'
+    compileOnly 'com.cvdnn:android-entity:0.1'
+    compileOnly 'com.cvdnn:android-lang:0.5.43'
+    compileOnly 'com.cvdnn:android-frame:0.1.7'
 
     compileOnly 'com.squareup.okio:okio:1.14.0'
     compileOnly 'com.squareup.okhttp3:okhttp:3.11.0'
@@ -38,22 +37,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-// push to bintray
+// push to maven
 ext {
-    bintrayOrg = 'ztone'
-    // bintray中创建的package name
-    bintrayName = 'ztone-pulley'
+    mvn = [
+            repo      : 'file:////Users/xiot/workon/m2/nexus',
 
-    libraryName = 'Ztone Pulley'
-    publishedGroupId = 'android.ztone'
-    artifact = 'ztone-pulley'
-    libraryVersion = android.defaultConfig.versionName
-
-    libraryDescription = 'Ztone Pulley'
-
-    siteUrl = 'https://github.com/handy001/ZtoneNetwork'
-    gitUrl = 'https://github.com/handy001/ZtoneNetwork.git'
+            groupId   : 'com.cvdnn',
+            artifactId: 'android-pulley',
+            version   : android.defaultConfig.versionName
+    ]
 }
 
-apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/pom_build.gradle'
-apply from: 'https://raw.githubusercontent.com/handy001/mvn-repo/master/bintray/push_to_bintray.gradle'
+apply from: 'http://mvn.cvdnn.com/maven_deploy.gradle'
